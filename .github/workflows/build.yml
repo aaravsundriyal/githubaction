@@ -1,6 +1,6 @@
 # This workflow will build a MuleSoft project and deploy to CloudHub
 
-name: Build and Deploy to Sandbox
+name: Build and Deploy to CloudHub
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
       run: mvn -B package --file process-salesforce-account/pom.xml
     - name: Stamp artifact file name with commit hash
       run: |
-        cd process-salesforce-account
+        
         artifactName1=$(ls target/*.jar | head -1)
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
@@ -37,7 +37,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: artifacts
-          path: process-salesforce-account/target/*.jar
+          path: target/*.jar
         
   deploy:
     needs: build
@@ -61,17 +61,24 @@ jobs:
         PASSWORD: ${{ secrets.PASSWORD }}
         CLOUDHUB_APP_NAME: ProcessSalesforceAccount
         REGION: us-east-1
+        RUNTIME: 4.6.0
         ENVIRONMENT: Sandbox
         WORKERS: 1
         WORKER_TYPE: Micro
+        CLIENT_ID: a65dc0f177bd41379bc9e1c7cc9fc0f8
+        CLIENTSECRET: f38ee9806d4249BE91Dee8B0d2b3D559
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -B -X -DmuleDeploy \
         -Dmule.artifact=$artifactName \
-        -Danypoint.username="$USERNAME" \
-        -Danypoint.password="$PASSWORD" \
+        -Danypoint_platform_username="$USERNAME" \
+        -Danypoint_platform_password="$PASSWORD" \
+        -Denvironment="${ENVIRONMENT}" \
+        -Danypoint_platform_client_id="${CLIENT_ID}" \
+        -Danypoint_platform_client_secret="${CLIENTSECRET}" \
+        -Dcloudhub.application.runtime="${RUNTIME}" \
         -Dcloudhub.application.name="${CLOUDHUB_APP_NAME}" \
         -Dregion="${REGION}" \
         -Dworkers="${WORKERS}" \
         -DworkerType="${WORKER_TYPE}" \
-        --file process-salesforce-account/pom.xml
+        --file pom.xml
