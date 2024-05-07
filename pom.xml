@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>githubaction</artifactId>
+	<artifactId>process_salesforce_account</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>githubaction</name>
-
+	<name>process-salesforce-account</name>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.5.3</app.runtime>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.1.0</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -23,6 +25,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
+					
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -30,41 +33,67 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-				<classifier>mule-application</classifier>
-				<cloudHubDeployment>
+					<classifier>mule-application</classifier>
+					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.5.0</muleVersion>
-						<username>aaravsundriyal</username>
-						<password>Evontech@123</password>
-						<authToken>eyJhbGciOiJFUzI1NiIsInR5cCI6Imp3dCIsImtpZCI6ImFueXBvaW50X2lhbV9wcm9kLWMyYy00LTE3MTMxMzkyMTc2ODgiLCJ2ZXIiOiIxLjAifQ.eyJhdXQiOiJTRVJWSUNFIiwiY3R4Ijoic2ZkYy5naWQtYXV0aCIsImlzdCI6Miwic3R5IjoiVGVuYW50Iiwic2NvcGUiOiJ2ZXJpZnkiLCJ2YWFzX2FyZ3MiOnsiYWN0aW9uX2lkIjoibG9naW4iLCJhY3Rpb25fbmFtZSI6IkxvZ2luIiwidHJ1c3RfdmVyaWZpZWRfZGV2aWNlcyI6ZmFsc2UsImVtYWlsIjoiIiwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9hbnlwb2ludC5tdWxlc29mdC5jb20vYWNjb3VudHMvbG9naW4vbWZhX2NhbGxiYWNrIiwic3RhdGUiOiIwNDAyMmM5YS1jZDgzLTQyODYtOTk1ZS03MmRlODhlNGRjZGMiLCJ1c2VyX2FjY291bnRfaWQiOiI5YTQwOGE5Zi1jNTc3LTRjNmMtOWVhMi1kNGIxZDI4ZTQ4MWMiLCJ1c2VyX2Rpc3BsYXlfbmFtZSI6ImFhcmF2c3VuZHJpeWFsIn0sImlhdCI6MTcxNTA3MTQ1OCwibmJmIjoxNzE1MDcxNDU4LCJleHAiOjE3MTUwNzE0NzgsImF1ZCI6InZhYXMiLCJpc3MiOiJhbnlwb2ludF9hY2Nlc3NfbWFuYWdlbWVudF91czEiLCJqdGkiOiJjZTI0ODEzZS03ZjdkLTQ5NjgtYTFkZi1hYmFiYjNmOTk0ODEifQ.4xwf7yURYOq5r3G-4Q9E6-OA-KFRxMwlg_A13PBtQwoZ9ReaJz47xiqNMlJAiR-2bAXvvNMYMHcsy56_0LdSMQ</authToken>
-						<applicationName>githubaction</applicationName>
+						<muleVersion>4.6.0</muleVersion>
+						<applicationName>ProcessSalesforceAccount</applicationName>
+						<username>${anypoint.username}</username>
+                        <password>${anypoint.password}</password>
+                        <region>us-east-1</region>
 						<workers>1</workers>
-						<workerType>MICRO</workerType>
+						<workerType>Micro</workerType>
 						<environment>Sandbox</environment>
 						<objectStoreV2>true</objectStoreV2>
 						<properties>
-                            <mule.env>Sandbox</mule.env>
                             <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
                             <anypoint.platform.client_id>e7cb962d8bde44e29901dc804e941215</anypoint.platform.client_id>
                             <anypoint.platform.client_secret>5b1329F64176490CA048fed1DC7737D7</anypoint.platform.client_secret>
                         </properties>
 					</cloudHubDeployment>
 				</configuration>
+							
 			</plugin>
 		</plugins>
 	</build>
+	
+	
 
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-http-connector</artifactId>
-			<version>1.9.0</version>
+			<artifactId>mule-sockets-connector</artifactId>
+			<version>1.2.4</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<version>1.2.7</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
+			<version>10.20.0</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<version>1.10.4</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-sockets-connector</artifactId>
-			<version>1.2.4</version>
+			<artifactId>mule-http-connector</artifactId>
+			<version>1.9.2</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sftp-connector</artifactId>
+			<version>2.0.7</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
@@ -97,3 +126,4 @@
 	</pluginRepositories>
 
 </project>
+
