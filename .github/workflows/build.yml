@@ -69,7 +69,7 @@ jobs:
         CLIENTSECRET: f38ee9806d4249BE91Dee8B0d2b3D559
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -B -X -DmuleDeploy \
+        mvn deploy -B -DmuleDeploy \
         -Dmule.artifact=$artifactName \
         -Danypoint_platform_username="$USERNAME" \
         -Danypoint_platform_password="$PASSWORD" \
