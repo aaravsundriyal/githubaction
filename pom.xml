@@ -30,6 +30,7 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<classifier>mule-application</classifier>
 				<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.5.0</muleVersion>
@@ -40,6 +41,12 @@
 						<workerType>MICRO</workerType>
 						<environment>Sandbox</environment>
 						<objectStoreV2>true</objectStoreV2>
+						<properties>
+                            <mule.env>Sandbox</mule.env>
+                            <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+                            <anypoint.platform.client_id>e7cb962d8bde44e29901dc804e941215</anypoint.platform.client_id>
+                            <anypoint.platform.client_secret>5b1329F64176490CA048fed1DC7737D7</anypoint.platform.client_secret>
+                        </properties>
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
