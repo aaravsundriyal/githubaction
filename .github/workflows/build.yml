@@ -72,6 +72,12 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
       run: |
+        echo "==================="
+        echo  ${{ secrets.USERNAME }}
+        echo ${{ secrets.PASSWORD }}
+        echo "========="
+        echo $USERNAME
+        echo $PASSWORD
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
