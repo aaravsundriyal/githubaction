@@ -34,8 +34,8 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.6.0</muleVersion>
 						<applicationName>githubaction</applicationName>
-						<username>${{secrets.username}}</username>
-						<password>${{secrets.password}}</password>
+						<username>sundriyal</username>
+						<password>Pradeep@123</password>
 						<region>us-east-1</region>
 						<workers>1</workers>
 						<workerType>Micro</workerType>
@@ -43,8 +43,8 @@
 						<objectStoreV2>true</objectStoreV2>
 						<properties>
 							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
-							<anypoint.platform.client_id>${{secrets.client_id}}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${{secrets.client_secret}}</anypoint.platform.client_secret>
+							<anypoint.platform.client_id>a72fafa506d14149b403540147ea6477</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>Cce2D8700eCD475188f7FdAE56A1a472</anypoint.platform.client_secret>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
