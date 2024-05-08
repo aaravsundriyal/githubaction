@@ -27,8 +27,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Stamp artifact file name with commit hash
-      run: |
-        
+      run: 
         artifactName1=$(ls target/*.jar | head -1)
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
         artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
@@ -68,6 +67,7 @@ jobs:
         CLIENT_ID: a72fafa506d14149b403540147ea6477
         CLIENTSECRET: Cce2D8700eCD475188f7FdAE56A1a472
       run: |
+        echo "TEST"
         artifactName=$(ls *.jar | head -1)
         mvn deploy -B -DmuleDeploy \
         -Dmule.artifact=$artifactName \
