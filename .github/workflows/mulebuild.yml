@@ -68,7 +68,7 @@ jobs:
         CLIENTSECRET: ${{ secrets.client_password}}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -B -X -DmuleDeploy \
+        mvn deploy -B -DmuleDeploy \
         -Dmule.artifact=$artifactName \
         -Danypoint_platform_username="$USERNAME" \
         -Danypoint_platform_password="$PASSWORD" \
