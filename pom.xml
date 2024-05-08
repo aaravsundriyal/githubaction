@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>process_salesforce_account</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>process-salesforce-account</name>
-	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -25,7 +22,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
-					
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -33,32 +29,28 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<classifier>mule-application</classifier>
+					<classifier>---- select project type ----</classifier>
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.6.0</muleVersion>
-						<applicationName>ProcessSalesforceAccount</applicationName>
-						<username>${anypoint.username}</username>
-                        <password>${anypoint.password}</password>
-                        <region>us-east-1</region>
+						<applicationName>githubaction</applicationName>
+						<username>${{secrets.username}}</username>
+						<password>${{secrets.password}}</password>
+						<region>us-east-1</region>
 						<workers>1</workers>
 						<workerType>Micro</workerType>
 						<environment>Sandbox</environment>
 						<objectStoreV2>true</objectStoreV2>
 						<properties>
-                            <anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
-                            <anypoint.platform.client_id>e7cb962d8bde44e29901dc804e941215</anypoint.platform.client_id>
-                            <anypoint.platform.client_secret>5b1329F64176490CA048fed1DC7737D7</anypoint.platform.client_secret>
-                        </properties>
+							<anypoint.platform.config.analytics.agent.enabled>true</anypoint.platform.config.analytics.agent.enabled>
+							<anypoint.platform.client_id>${{secrets.client_id}}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${{secrets.client_secret}}</anypoint.platform.client_secret>
+						</properties>
 					</cloudHubDeployment>
 				</configuration>
-							
 			</plugin>
 		</plugins>
 	</build>
-	
-	
-
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>
@@ -126,4 +118,3 @@
 	</pluginRepositories>
 
 </project>
-
