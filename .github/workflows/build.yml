@@ -67,7 +67,6 @@ jobs:
         CLIENT_ID: a72fafa506d14149b403540147ea6477
         CLIENTSECRET: Cce2D8700eCD475188f7FdAE56A1a472
       run: |
-        echo "TEST"
         artifactName=$(ls *.jar | head -1)
         mvn deploy -B -DmuleDeploy \
         -Dmule.artifact=$artifactName \
