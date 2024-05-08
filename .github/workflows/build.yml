@@ -60,7 +60,7 @@ jobs:
         PASSWORD: Pradeep@123
         CLOUDHUB_APP_NAME: githubaction
         REGION: us-east-1
-        RUNTIME: 4.5.0
+        RUNTIME: 4.6.0
         ENVIRONMENT: Sandbox
         WORKERS: 1
         WORKER_TYPE: Micro
