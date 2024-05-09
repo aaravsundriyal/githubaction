@@ -61,11 +61,11 @@ jobs:
         CLOUDHUB_APP_NAME: githubaction
         REGION: us-east-1
         RUNTIME: 4.6.0
-        ENVIRONMENT: Sandbox
+        ENVIRONMENT: DEV
         WORKERS: 1
         WORKER_TYPE: Micro
-        CLIENT_ID: a72fafa506d14149b403540147ea6477
-        CLIENTSECRET: Cce2D8700eCD475188f7FdAE56A1a472
+        CLIENT_ID: e132512e2bcc499790408e513a006e90
+        CLIENTSECRET: 22b547664E2f45C3A99533414d08C633
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy -B -DmuleDeploy \
