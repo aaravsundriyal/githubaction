@@ -40,6 +40,7 @@ jobs:
         
   deploy:
     needs: build
+    environment: DEV
     runs-on: ubuntu-latest
     steps:    
     - name: Checkout this repo
