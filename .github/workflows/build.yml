@@ -67,10 +67,11 @@ jobs:
         CLIENT_ID: ${{ secrets.CLIENT_ID_DEV }}
         CLIENTSECRET: ${{ secrets.CLIENT_SECRET_DEV }}
       run: |
-       echo "******************"
+       echo "PRADEEP"
        echo $USERNAME
-       echo $CLOUDHUB_APP_NAME
+       echo ${CLOUDHUB_APP_NAME}
        echo $REGION
+       echo "Sundriyal"
         artifactName=$(ls *.jar | head -1)
          mvn deploy -B -X -DmuleDeploy \
         -Dmule.artifact=$artifactName \
