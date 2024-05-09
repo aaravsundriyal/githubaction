@@ -68,8 +68,7 @@ jobs:
         CLIENTSECRET: ${{ secrets.CLIENT_SECRET_DEV }}
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn -U clean install
-        mvn deploy -B -DmuleDeploy \
+         mvn deploy -B -X -DmuleDeploy \
         -Dmule.artifact=$artifactName \
         -Danypoint_platform_username="$USERNAME" \
         -Danypoint_platform_password="$PASSWORD" \
