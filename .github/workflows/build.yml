@@ -75,8 +75,8 @@ jobs:
         -Denvironment="${ENVIRONMENT}" \
         -Danypoint_platform_client_id="${CLIENT_ID}" \
         -Danypoint_platform_client_secret="${CLIENTSECRET}" \
-        -Dcloudhub.application.runtime="${RUNTIME}" \
-        -Dcloudhub.application.name="${CLOUDHUB_APP_NAME}" \
+        -DmuleVersion="${RUNTIME}" \
+        -DapplicationName="${CLOUDHUB_APP_NAME}" \
         -Dregion="${REGION}" \
         -Dworkers="${WORKERS}" \
         -DworkerType="${WORKER_TYPE}" \
