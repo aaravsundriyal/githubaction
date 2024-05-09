@@ -72,7 +72,7 @@ jobs:
        echo $CLOUDHUB_APP_NAME
        echo $REGION
         artifactName=$(ls *.jar | head -1)
-         mvn deploy -B  -DmuleDeploy \
+         mvn deploy -B -X -DmuleDeploy \
         -Dmule.artifact=$artifactName \
         -Danypoint_platform_username="$USERNAME" \
         -Danypoint_platform_password="$PASSWORD" \
