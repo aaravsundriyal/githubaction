@@ -12,6 +12,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	</http:listener-config>
 	<flow name="githubactionFlow" doc:id="8104ab54-72a5-4619-9739-108c14efd540" >
 		<http:listener doc:name="Listener" doc:id="29d04458-fc6e-48df-90f6-22666dabc63c" config-ref="HTTP_Listener_config1" path="/cloudtest"/>
-		<logger level="INFO" doc:name="Logger" doc:id="f1b013f1-6bcf-4623-b260-2bd7b5fcfa3c" message="Message from C loud."/>
+		<logger level="INFO" doc:name="Logger" doc:id="f1b013f1-6bcf-4623-b260-2bd7b5fcfa3c" message="Message from Cloud."/>
 	</flow>
 </mule>
