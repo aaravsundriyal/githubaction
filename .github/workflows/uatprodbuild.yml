@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: cloud HUB Deployment
+name: cloud HUB Deployment UAT-PROD
 
 # Controls when the workflow will run
 on:
@@ -76,11 +76,12 @@ jobs:
           ENVIRONMENT: ${{vars.ENVIRONMENT}}
           WORKERS: ${{vars.WORKERS}}
           WORKER_TYPE: ${{vars.WORKERTYPE}}
-          CLIENT_ID: ${{ secrets.CLIENT_ID_UAT }}
-          CLIENTSECRET: ${{ secrets.CLIENT_SECRET_UAT }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID_UAT}}
+          CLIENTSECRET: ${{ secrets.CLIENT_SECRET_UAT}}
         run: |
          echo "PRADEEP"
          echo $USERNAME
+         echo $PASSWORD
          echo "Sundriyal"
           artifactName=$(ls *.jar | head -1)
            mvn deploy -B -X -DmuleDeploy \
