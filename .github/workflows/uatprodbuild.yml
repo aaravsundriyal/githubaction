@@ -68,8 +68,8 @@ jobs:
           name: artifacts
       - name: Deploy to CloudHub
         env:
-          USERNAME: ${{ secrets.ANYPOINT_USERNAME}}
-          PASSWORD: ${{ secrets.ANYPOINT_PASSWORD}}
+          USERNAME: ${{vars.ANYPOINT_USERNAME}}
+          PASSWORD: ${{vars.ANYPOINT_PASSWORD}}
           CLOUDHUB_APP_NAME: ${{vars.APPLICATIONNAME}}
           REGION: ${{vars.REGION}}
           RUNTIME: ${{vars.MULEVERSION}}
@@ -81,8 +81,6 @@ jobs:
         run: |
          echo "PRADEEP"
          echo $USERNAME
-         echo ${CLOUDHUB_APP_NAME}
-         echo $REGION
          echo "Sundriyal"
           artifactName=$(ls *.jar | head -1)
            mvn deploy -B -X -DmuleDeploy \
