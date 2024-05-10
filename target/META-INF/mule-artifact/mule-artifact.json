@@ -3,15 +3,17 @@
     "githubaction.xml"
   ],
   "secureProperties": [],
+  "supportedJavaVersions": [],
   "redeploymentEnabled": true,
-  "name": "com.mycompany:githubaction:1.0.0-SNAPSHOT",
+  "name": "com.mycompany:githubaction:1.0.0",
   "minMuleVersion": "4.5.0",
-  "requiredProduct": "MULE",
+  "requiredProduct": "MULE_EE",
   "classLoaderModelLoaderDescriptor": {
     "id": "mule",
     "attributes": {
       "exportedPackages": [],
       "exportedResources": [
+        "application-types.xml",
         "githubaction.xml",
         "log4j2.xml"
       ]

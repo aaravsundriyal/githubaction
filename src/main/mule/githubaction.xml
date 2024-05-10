@@ -5,10 +5,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7640d616-b1e6-4d34-91c0-f790a6d646f8" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="a58ed166-426d-47be-ad15-b23cecc76e27" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<flow name="githubactionFlow" doc:id="ccd9b9d8-4134-4213-ac3c-27401fb3c6a0" >
-		<http:listener doc:name="Listener" doc:id="ea985787-8f06-4628-a0bb-f68031fdb730" config-ref="HTTP_Listener_config" path="/testgit"/>
-		<logger level="INFO" doc:name="Logger" doc:id="3adc7f8e-8b6c-47b7-9791-838abf52b644" />
+	<flow name="githubactionFlow" doc:id="8104ab54-72a5-4619-9739-108c14efd540" >
+		<http:listener doc:name="Listener" doc:id="29d04458-fc6e-48df-90f6-22666dabc63c" config-ref="HTTP_Listener_config1" path="/cloudtest"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f1b013f1-6bcf-4623-b260-2bd7b5fcfa3c" message="Message from C loud."/>
 	</flow>
 </mule>
