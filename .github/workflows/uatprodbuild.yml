@@ -68,16 +68,16 @@ jobs:
           name: artifacts
       - name: Deploy to CloudHub
         env:
-          USERNAME: ${{ secrets.USERNAME}}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          USERNAME: ${{ secrets.ANYPOINT_USERNAME}}
+          PASSWORD: ${{ secrets.ANYPOINT_PASSWORD}}
           CLOUDHUB_APP_NAME: ${{vars.APPLICATIONNAME}}
           REGION: ${{vars.REGION}}
           RUNTIME: ${{vars.MULEVERSION}}
           ENVIRONMENT: ${{vars.ENVIRONMENT}}
           WORKERS: ${{vars.WORKERS}}
           WORKER_TYPE: ${{vars.WORKERTYPE}}
-          CLIENT_ID: ${{ secrets.CLIENT_ID_DEV }}
-          CLIENTSECRET: ${{ secrets.CLIENT_SECRET_DEV }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID_UAT }}
+          CLIENTSECRET: ${{ secrets.CLIENT_SECRET_UAT }}
         run: |
          echo "PRADEEP"
          echo $USERNAME
